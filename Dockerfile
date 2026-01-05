@@ -42,8 +42,7 @@ ENV JAVA_OPTS="-XX:+UseZGC -XX:+ZGenerational -XX:MaxRAMPercentage=75.0 -Djava.s
 # Muda para o usuário restrito
 USER appuser
 
-# Documenta a porta exposta
-EXPOSE 10808
+EXPOSE ${APP_PORT}
 
 # ENTRYPOINT em modo Exec (JSON Array) para passar sinais de SO (SIGTERM)
 ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]
