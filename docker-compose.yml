@@ -38,16 +38,20 @@ services:
     depends_on:
       db:
         condition: service_healthy
+
+    # 1. Carrega o arquivo .env inteiro primeiro
+    env_file:
+      - .env
+
+    # 2. Define/Sobrescreve variáveis específicas
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/${DB_NAME}?allowPublicKeyRetrieval=true&useSSL=false
       SPRING_DATASOURCE_USERNAME: ${DB_USER}
       SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       SERVER_PORT: ${APP_PORT}
-    env_file:
-      - .env
 
-      # Variáveis de segurança injetadas no container
+      # Agora sim, indentados corretamente dentro de 'environment'
       SECURITY_USER: ${SECURITY_USER}
       SECURITY_PASSWORD: ${SECURITY_PASSWORD}
       SECURITY_ROLES: ${SECURITY_ROLES}
