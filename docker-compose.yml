@@ -31,7 +31,6 @@ services:
           memory: 512M
 
   app:
-    # Atenção: Certifique-se que DOCKER_USERNAME está no .env
     image: ${DOCKER_USERNAME}/churn-api:latest
     container_name: churn-api
     restart: on-failure
